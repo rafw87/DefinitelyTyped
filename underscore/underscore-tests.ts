@@ -9,9 +9,9 @@ _.map([1, 2, 3], (num) => num * 3);
 _.map({ one: 1, two: 2, three: 3 }, (value, key) => value * 3);
 
 //var sum = _.reduce([1, 2, 3], (memo, num) => memo + num, 0);	// https://typescript.codeplex.com/workitem/1960
-var sum = _.reduce<number, number>([1, 2, 3], (memo, num) => memo + num, 0);
-sum = _.reduce<number, number>([1, 2, 3], (memo, num) => memo + num); // memo is optional #issue 5 github
-sum = _.reduce<string, number>({'a':'1', 'b':'2', 'c':'3'}, (memo, numstr) => memo + (+numstr));
+var sum = _.reduce<number, number>([1, 2, 3], (memo, num, key) => memo + num + key.valueOf(), 0);
+sum = _.reduce<number, number>([1, 2, 3], (memo, num, key) => memo + num + key.valueOf()); // memo is optional #issue 5 github
+sum = _.reduce<string, number>({'a':'1', 'b':'2', 'c':'3'}, (memo, numstr, key) => memo + (+numstr) + key.length);
 
 var list = [[0, 1], [2, 3], [4, 5]];
 //var flat = _.reduceRight(list, (a, b) => a.concat(b), []);	// https://typescript.codeplex.com/workitem/1960
